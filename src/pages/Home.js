@@ -11,6 +11,10 @@ const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
 `;
 
 const Slider = styled.div`
@@ -28,13 +32,20 @@ const Image = styled.img`
 const Services = styled.div`
   margin-top: 40px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const Service = styled.div`
   text-align: center;
+  width: 100%;
   max-width: 250px;
+  margin-bottom: 20px;
 `;
 
 const Icon = styled.img`
@@ -67,7 +78,6 @@ const CtaButton = styled.a`
 const Home = () => {
   return (
     <Container>
-      
       <main>
         <Slider>
           <Image src={imagen1} alt="Imagen 1" />
@@ -97,7 +107,6 @@ const Home = () => {
           <CtaButton href="/portfolio">Explora nuestro trabajo</CtaButton>
         </CallToAction>
       </main>
-      
     </Container>
   );
 };
