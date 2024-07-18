@@ -22,16 +22,20 @@ const LogoImage = styled.img`
 
 const Nav = styled.nav`
   margin-top: 10px;
+  display: flex;
+  justify-content: center; /* Centra los elementos */
+  width: 100%; /* Ocupa todo el ancho disponible */
 `;
 
 const NavLink = styled(Link)`
- font-family: 'Digital-7', sans-serif;
- color: #333;
- text-decoration: none; /* Quita el subrayado por defecto */
-  margin: 0 10px; /* Márgenes izquierdo y derecho de 10px */
-  transition: text-decoration-color 0.0s ease;
+  font-family: 'Digital-7', sans-serif;
+  color: #333;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: text-decoration-color 0.3s ease;
+
   &:hover {
-    text-decoration: underline; /* Subrayado al hacer hover */
+    text-decoration: underline;
     text-decoration-color: #00ff00;
   }
 `;

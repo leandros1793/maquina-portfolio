@@ -46,30 +46,23 @@ const GlobalStyles = createGlobalStyle`
   }
 
   nav a {
-  color: #ffffff; /* Color blanco para el texto */
-  text-decoration: none; /* Quita el subrayado por defecto */
-  margin: 0 10px; /* Márgenes izquierdo y derecho de 10px */
-  transition: text-decoration-color 0.3s ease; /* Transición suave para el cambio de color del subrayado */
-}
+    color: #ffffff; /* Color blanco para el texto */
+    text-decoration: none; /* Quita el subrayado por defecto */
+    margin: 0 10px; /* Márgenes izquierdo y derecho de 10px */
+    transition: text-decoration-color 0.3s ease; /* Transición suave para el cambio de color del subrayado */
+  }
 
-nav a:hover {
-  text-decoration: underline; /* Subrayado al hacer hover */
-  text-decoration-color: #00ff00; /* Color verde para el subrayado */
-}
-
-
+  nav a:hover {
+    text-decoration: underline; /* Subrayado al hacer hover */
+    text-decoration-color: #00ff00; /* Color verde para el subrayado */
+  }
 
   main {
     padding: 20px;
+    max-width: 100%;
   }
 
-  h2 {
-    color: #0f0f0f;
-    border-bottom: 2px solid #00ff00;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-  }
-  h3 {
+  h2, h3 {
     color: #0f0f0f;
     border-bottom: 2px solid #00ff00;
     padding-bottom: 10px;
@@ -90,6 +83,25 @@ nav a:hover {
     display: block;
     margin-top: 10px;
     color: #00ff00;
+  }
+
+  /* Media Query para dispositivos móviles */
+  @media (max-width: 768px) {
+    header {
+      font-size: 0.9em;
+    }
+
+    nav a {
+      margin: 0 5px; /* Reducir el espacio entre enlaces */
+    }
+
+    main {
+      padding: 10px;
+    }
+
+    h2, h3 {
+      font-size: 1.5em; /* Reducir el tamaño de los títulos */
+    }
   }
 `;
 
