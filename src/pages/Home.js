@@ -1,114 +1,65 @@
 import React from 'react';
-import styled from 'styled-components';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import imagen1 from '../assets/imagen1.jpeg';
-import foto1 from "../assets/foto1.jpeg";
-import iconopc from "../assets/iconopc.jpeg";
-import mv from "../assets/mv.jpeg";
+import { Link } from 'react-router-dom';
+import { styled } from '@mui/system';
 
-const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
+const darkenColor = (color, percent) => {
+  const num = parseInt(color.slice(1), 16);
+  const r = Math.max((num >> 16) - percent, 0);
+  const g = Math.max(((num >> 8) & 0x00FF) - percent, 0);
+  const b = Math.max((num & 0x0000FF) - percent, 0);
+  
+  return `#${(0x1000000 + (r * 0x10000) + (g * 0x100) + b).toString(16).slice(1)}`;
+};
+
+const GridContainer = styled('div')`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  height: 100vh;
   padding: 20px;
-
-  @media (max-width: 768px) {
-    padding: 10px;
-  }
+  position: relative;
 `;
 
-const Slider = styled.div`
-  margin-top: 20px;
-  max-width: 100%;
-  overflow: hidden;
-`;
-
-const Image = styled.img`
-  width: 100%;
-  height: auto;
-  display: block;
-`;
-
-const Services = styled.div`
-  margin-top: 40px;
+const Box = styled(Link)`
+  background-color: ${props => props.bgColor || 'white'};
+  border-radius: 8px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
   align-items: center;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
-
-const Service = styled.div`
-  text-align: center;
-  width: 100%;
-  max-width: 250px;
-  margin-bottom: 20px;
-`;
-
-const Icon = styled.img`
-  width: 150px;
-  height: 220px;
-  margin-bottom: 20px;
-`;
-
-const CallToAction = styled.div`
-  text-align: center;
-  margin-top: 40px;
-`;
-
-const CtaButton = styled.a`
-  width: auto;
-  display: inline-block;
-  background-color: #33CD32; /* Fondo verde */
-  color: #000000; /* Letras negras */
+  justify-content: center;
+  font-size: 24px;
+  color: #333;
   text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  font-family: 'Digital-7', sans-serif; /* Aplica la fuente Digital-7 */
+  position: relative;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 
   &:hover {
-    background-color: #32CD32 ; /* Cambio de color al hacer hover */
+    transform: scale(1.05);
+    background-color: ${props => darkenColor(props.bgColor || '#FFFFFF', 20)};
   }
 `;
 
-const Home = () => {
-  return (
-    <Container>
-      <main>
-        <Slider>
-          <Image src={imagen1} alt="Imagen 1" />
-        </Slider>
-        <h2>Servicios Destacados</h2>
-        <Services>
-          <Service>
-            <Icon src={foto1} alt="Fotografía" />
-            <h3>Fotografía Profesional</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <CtaButton href="/services">Más información</CtaButton>
-          </Service>
-          <Service>
-            <Icon src={iconopc} alt="Producción de Contenido" />
-            <h3>Producción de Contenido</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <CtaButton href="/services">Más información</CtaButton>
-          </Service>
-          <Service>
-            <Icon src={mv} alt="Marketing Visual" />
-            <h3>Marketing Visual</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <CtaButton href="/services">Más información</CtaButton>
-          </Service>
-        </Services>
-        <CallToAction>
-          <CtaButton href="/portfolio">Explora nuestro trabajo</CtaButton>
-        </CallToAction>
-      </main>
-    </Container>
-  );
-};
+const CenterCircle = styled('div')`
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  z-index: 0;
+  background: radial-gradient(circle at center, 
+    ${props => props.bgColor1 || '#A7E3A3'} 50%, 
+    ${props => props.bgColor2 || '#FFFFFF'} 50%);
+`;
+
+const Home = () => (
+  <GridContainer>
+    <Box to="/about" bgColor="#12ff00">Proyectos</Box>
+    <Box to="/portfolio" bgColor="#FFFFFF">Portfolio</Box>
+    <Box to="/services" bgColor="#FFFFFF">LAB</Box>
+    <Box to="/contact" bgColor="#12ff00">Contacto</Box>
+    <CenterCircle bgColor1="#12ff00" bgColor2="#FFFFFF" />
+  </GridContainer>
+);
 
 export default Home;

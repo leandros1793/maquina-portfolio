@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const GlobalStyles = createGlobalStyle`
   @font-face {
@@ -27,15 +29,15 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: 'Helvetica', sans-serif;
-    background-color: #ffffff;
-    color: #000000;
+    background-color: ${props => props.theme.bodyBackgroundColor || '#ffffff'};
+    color: ${props => props.theme.bodyColor || '#000000'};
     margin: 0;
     padding: 0;
   }
 
   header, footer {
-    background-color: #222222;
-    color: #ffffff;
+    background-color: ${props => props.theme.headerFooterBackgroundColor || '#222222'};
+    color: ${props => props.theme.headerFooterColor || '#ffffff'};
     padding: 20px;
     text-align: center;
   }
@@ -43,18 +45,19 @@ const GlobalStyles = createGlobalStyle`
   header {
     font-size: 2em;
     font-weight: bold;
+    font-family: 'Digital-7'; // Usa Digital-7 en el header
   }
 
   nav a {
-    color: #ffffff; /* Color blanco para el texto */
-    text-decoration: none; /* Quita el subrayado por defecto */
-    margin: 0 10px; /* Márgenes izquierdo y derecho de 10px */
-    transition: text-decoration-color 0.3s ease; /* Transición suave para el cambio de color del subrayado */
+    color: ${props => props.theme.headerFooterColor || '#ffffff'};
+    text-decoration: none;
+    margin: 0 10px;
+    transition: text-decoration-color 0.3s ease;
   }
 
   nav a:hover {
-    text-decoration: underline; /* Subrayado al hacer hover */
-    text-decoration-color: #00ff00; /* Color verde para el subrayado */
+    text-decoration: underline;
+    text-decoration-color: ${props => props.theme.headerFooterBackgroundColor || '#00ff00'};
   }
 
   main {
@@ -63,10 +66,11 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h2, h3 {
-    color: #0f0f0f;
-    border-bottom: 2px solid #00ff00;
+    color: ${props => props.theme.bodyColor || '#0f0f0f'};
+    border-bottom: 2px solid ${props => props.theme.headerFooterBackgroundColor || '#00ff00'};
     padding-bottom: 10px;
     margin-bottom: 20px;
+    font-family: 'Digital-7-Mono'; // Usa Digital-7-Mono en h2 y h3
   }
 
   ul {
@@ -82,17 +86,17 @@ const GlobalStyles = createGlobalStyle`
   p strong {
     display: block;
     margin-top: 10px;
-    color: #00ff00;
+    color: ${props => props.theme.headerFooterBackgroundColor || '#00ff00'};
+    font-family: 'Digital-7-Italic'; // Usa Digital-7-Italic en p strong
   }
 
-  /* Media Query para dispositivos móviles */
   @media (max-width: 768px) {
     header {
       font-size: 0.9em;
     }
 
     nav a {
-      margin: 0 5px; /* Reducir el espacio entre enlaces */
+      margin: 0 5px;
     }
 
     main {
@@ -100,7 +104,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     h2, h3 {
-      font-size: 1.5em; /* Reducir el tamaño de los títulos */
+      font-size: 1.5em;
     }
   }
 `;

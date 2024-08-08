@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+
 import ProjectImage1 from '../assets/project1.jpeg';
 import ProjectImage2 from '../assets/project2.jpeg';
 import ProjectImage3 from '../assets/project3.jpeg';
